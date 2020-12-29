@@ -1,0 +1,150 @@
+%%
+%%	AVISO IMPORTANTE
+%%	Formato optimizado para el sistema operativo GNU/Linux 64 bits
+%%	usar TexLive 2016 (o superior), http://www.ctan.org/tex-archive/systems/texlive/Images/
+%%	usar TeXstudio 2.11, http://texstudio.sourceforge.net/
+
+\documentclass[letterpaper,12pt]{thesisECFM}
+\usepackage{macros}
+
+%para que no corte palabras
+\usepackage[none]{hyphenat}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumerate}
+
+%\usepackage[natbibapa]{apacite}%bibliografia y citas en formato apa
+\usepackage[authoryear]{natbib}
+\usepackage[load=prefixed, load=abbr]{siunitx}
+\usepackage[arrowdel]{physics}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{url}
+
+%\usepackage[usenames]{color}%para colores en las palabras
+
+%%	NO OLVIDE INCLUIR FUENTE DE LAS TABLAS Y FIGURAS
+
+% Decomentar para anular recuadros en los hiperenlaces dentro del pdf
+% \hypersetup{pdfborder={0 0 0}}
+
+% Teoremas ---------------------------------------------------------
+% estos ambientes son para teoremas, lemas, corolarios, otros
+% si no los utiliza los puede obviar en su trabajo de graduación
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{cor}{Corolario}[chapter]
+\newtheorem{lem}{Lema}[chapter]
+\newtheorem{prp}{Proposición}[chapter]
+
+\theoremstyle{definition}
+\newtheorem{exa}{Ejemplo}[chapter]
+\newtheorem{defn}{Definición}[chapter]
+\newtheorem{axm}{Axioma}[chapter]
+
+\theoremstyle{remark}
+\newtheorem{rem}{Nota}[chapter]
+
+% Operadores y funciones -------------------------------------------
+\newcommand{\Ms}{M_{\odot}}%simbolo de masa solar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%comandos para referencias cruzadas-----------------
+
+\renewcommand{\figureautorefname}{figura}
+
+
+%agregar la palabra ecuación a eqref
+\usepackage{letltxmacro}
+\LetLtxMacro{\originaleqref}{\eqref}
+\renewcommand{\eqref}{\textcolor{blue}{ecuaci\'on}~\originaleqref}
+%referencias a imageneshttps://www.overleaf.com/project/5f20dc9d4637350001c5c806
+\newcommand{\figref}[1]{\textcolor{blue}{figura}~\ref{#1}}
+
+%referencias a cuadros
+\newcommand{\tabref}[1]{\textcolor{blue}{cuadro}~\ref{#1}}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, urlcolor=blue]{hyperref}%colores para los hipervinculos
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%------------%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Cuerpo de la tesis -----------------------------------------------
+
+\begin{document}
+
+
+%% Datos generales del trabajo de graduación
+\datosThesis%
+{2}%						% física 1; matemática 2
+{De Regreso a un Mundo Feliz a través de la Geometría Diferencial}%		% Título del trabajo de graduación
+{Fulano de Tal}%			% autor
+{Mengano Pérez}%			% asesor
+{septiembre de 2015}		% mes y año de la orden de impresión
+{2}							% femenino 1; masculino 2
+
+%% Datos generales del examen general privado
+\examenPrivado%
+{M.Sc. Edgar Anibal Cifuentes Anléu}%	% director ECFM
+{Ing. José Rodolfo Samayoa Dardón}%		% secretario académico
+{Perengano}%		% examinador 1
+{Zutano}%		% examinador 2
+{Fulano 2}%		% examinador 3
+
+{\onehalfspacing	% interlineado 1 1/2
+
+\OrdenImpresion{ordenImpresion}		% incluye orden de impresión, guardada en pdf
+
+\Agrade{agradecimientos}			% Agradecimientos
+
+\Dedica{dedicatoria}				% Dedicatoria
+
+\par}
+ 
+\frontmatter    % --------------------------------------------------  Hojas preliminares
+
+{\onehalfspacing	% interlineado 1 1/2
+
+\tableofcontents    % Índice general vinculado
+
+%%% \figurasYtablas{ lista_figuras }{ lista_tablas }; con valor 1 se incluye la lista,
+%%% cualquier otro valor no la genera
+\figurasYtablas{1}{1}
+
+\include{simbolos}  % Lista de símbolos
+
+\include{objetivos}      % Resumen y objetivos
+
+\include{introduccion}      % Introducción
+
+\mainmatter     % --------------------------------------------------  Cuerpo del Trabajo de Graduación
+
+\include{chapters/ch1}      % Cap. 1 
+
+\include{chapters/ch2}      % Cap. 2 
+
+\include{chapters/ch3}      % Cap. 3 
+
+{\backmatter     %	Capítulos no van numerados --------------------------------------------------  Apartados finales
+
+\include{c_y_r}     % Conclusiones y recomendaciones
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{BIBLIOGRF\'IA}
+\renewcommand{\bibname}{BIBLIOGRAF\'IA}
+
+%\nocite{*}			% incluir a todas las entredas bibliográficas
+\bibliographystyle{apalike}	% estilo de bibliografía
+\bibliography{bibliography/bbtesis.bib,bibliography/libros.bib,bibliography/papers.bib}   % Bibliografía
+
+}
+
+% Descomentar en el caso de necesitar incluir apéndices
+%\appendix			% Apéndices
+
+%\include{tch1}
+
+\par}               % termina interlineado 1 1/2
+
+\end{document}
